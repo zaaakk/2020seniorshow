@@ -83,7 +83,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /Users/Zak/Documents/trinity/floor.jpg
+map_Kd floor.jpg
 
 newmtl blankwall1.004
 Ns 96.078431
@@ -94,7 +94,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /Users/Zak/Documents/trinity/floor.jpg
+map_Kd floor.jpg
 
 newmtl blankwall1.005
 Ns 96.078431
@@ -116,7 +116,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /Users/Zak/Documents/trinity/floor3.jpg
+map_Kd floor3.jpg
 
 newmtl frontdoor
 Ns 96.078431
@@ -137,7 +137,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /Users/Zak/Documents/trinity/sidedoor.png
+map_Kd sidedoor.png
 
 newmtl wall
 Ns 96.078431
