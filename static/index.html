@@ -39,67 +39,43 @@
 
 				scene = new THREE.Scene();
 
-				// new RGBELoader()
-				// 	.setDataType( THREE.UnsignedByteType )
-				// 	.setPath( 'textures/equirectangular/' )
-				// 	.load( 'royal_esplanade_1k.hdr', function ( texture ) {
+				// Instantiate a loader
+var loader = new GLTFLoader();
 
-				// 		var envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+// Optional: Provide a DRACOLoader instance to decode compressed mesh data
+var dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath( '/examples/js/libs/draco/' );
+loader.setDRACOLoader( dracoLoader );
 
-				// 		scene.background = envMap;
-				// 		scene.environment = envMap;
+// Load a glTF resource
+loader.load(
+	// resource URL
+	'models/gltf/duck/duck.gltf',
+	// called when the resource is loaded
+	function ( gltf ) {
 
-				// 		texture.dispose();
-				// 		pmremGenerator.dispose();
+		scene.add( gltf.scene );
 
-				// 		render();
+		gltf.animations; // Array<THREE.AnimationClip>
+		gltf.scene; // THREE.Group
+		gltf.scenes; // Array<THREE.Group>
+		gltf.cameras; // Array<THREE.Camera>
+		gltf.asset; // Object
 
-				// 		// model
+	},
+	// called while loading is progressing
+	function ( xhr ) {
 
-				// 		// use of RoughnessMipmapper is optional
-				// 		var roughnessMipmapper = new RoughnessMipmapper( renderer );
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
-				// 		var loader = new GLTFLoader().setPath( '' );
-				// 		loader.load( 'newblendertest.gltf', function ( gltf ) {
+	},
+	// called when loading has errors
+	function ( error ) {
 
-				// 			gltf.scene.traverse( function ( child ) {
+		console.log( 'An error happened' );
 
-				// 				if ( child.isMesh ) {
-
-				// 					roughnessMipmapper.generateMipmaps( child.material );
-
-				// 				}
-
-				// 			} );
-
-				// 			scene.add( gltf.scene );
-
-				// 			roughnessMipmapper.dispose();
-
-				// 			render();
-
-				// 		} );
-
-				// 	} );
-
-				var roughnessMipmapper = new RoughnessMipmapper( renderer );
-				var loader = new GLTFLoader().setPath( '' );
-						loader.load( 'newblendertest.gltf', function ( gltf ) {
-
-							gltf.scene.traverse( function ( child ) {
-
-								if ( child.isMesh ) {
-
-									roughnessMipmapper.generateMipmaps( child.material );
-
-								}
-
-							} );
-
-							scene.add( gltf.scene );
-
-								} );
-
+	}
+);
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
