@@ -117,6 +117,15 @@
             gltf.scenes; // Array<THREE.Group>
             gltf.cameras; // Array<THREE.Camera>
             gltf.asset; // Object
+            gltf.scene.traverse( function ( child ) {
+
+    if ( child.isMesh ) { 
+
+        child.material.alphaTest = 0.5;
+
+     }
+
+}  );
             gltf.scene.traverse( child => {
 
     if ( child.material ) child.material.metalness = 0;
